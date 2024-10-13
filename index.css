@@ -199,14 +199,16 @@ header {
 }
 
 /* Social icon CSS */
-.social-icons .fab {
+.social-icons .fab,
+.fas {
     font-size: 35px;
     padding-right: 15px;
     color: #ccc;
     transition: all 0.3s ease-in-out;
 }
 
-.social-icons .fab:hover {
+.social-icons .fab:hover,
+.fas:hover {
     color: #26A69A;
     transform: scale(1.15);
 }
