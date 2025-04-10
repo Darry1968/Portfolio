@@ -10,6 +10,127 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="/assets/Nashvar logo.png">
     <title>Portfolio - Darshan Soni</title>
+    <script src="js/terminal-annimation.js"></script>
+    <script src="js/glitch-effect.js"></script>
+    <script src="js/typing-effect.js"></script>
+    <script src="js/particles-effect.js"></script>
+
+    <!-- Add CSS for modal in head -->
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            margin: 15% auto;
+            padding: 30px;
+            border: 1px solid #00ff8c;
+            box-shadow: 0 0 20px rgba(0, 255, 140, 0.4);
+            width: 70%;
+            max-width: 700px;
+            border-radius: 10px;
+            position: relative;
+            animation: modalOpen 0.4s;
+        }
+
+        @keyframes modalOpen {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            color: #00ff8c;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #ff003c;
+            text-shadow: 0 0 10px #ff003c;
+        }
+
+        #modal-title {
+            color: #00ff8c;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-shadow: 0 0 10px rgba(0, 255, 140, 0.3);
+        }
+
+        #modal-description {
+            color: #f0f0f0;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .modal-btn {
+            background-color: transparent;
+            color: #00ff8c;
+            border: 2px solid #00ff8c;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .modal-btn:hover {
+            background-color: #00ff8c;
+            color: #0a0a0a;
+            box-shadow: 0 0 15px rgba(0, 255, 140, 0.5);
+        }
+
+        /* Section reveal animation */
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s;
+        }
+
+        .section-reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Make project titles clickable */
+        .project-sub-title {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .project-sub-title:hover {
+            color: #ff003c;
+            text-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+        }
+    </style>
 </head>
 
 <body>
@@ -243,11 +364,98 @@
             </div>
     </section>
     <script>
-        hamburger = document.querySelector(".hamburger");
-        hamburger.onclick = function () {
-            navBar = document.querySelector(".navbar");
-            navBar.classList.toggle("active");
-        }
+        // Project modal functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Project details 
+            const projectDetails = {
+                'API-Vulnerability-scanner': {
+                    title: 'ARGUS - API Vulnerability Scanner',
+                    description: 'A tool designed to automate the scanning of API endpoints for common security vulnerabilities. It can identify issues like CORS misconfigurations, injection vulnerabilities, broken authentication, and more.',
+                    github: 'https://github.com/Darry1968/argus',
+                    demo: '#'
+                },
+                'Cipher Identifier': {
+                    title: 'CipherX - Cipher Identifier & Decoder',
+                    description: 'An intelligent tool that can identify and decode various types of encryption and encoding methods. It uses pattern recognition to determine the likely cipher type and offers decryption options.',
+                    github: 'https://github.com/Darry1968/cipherx',
+                    demo: '#'
+                },
+                'HLTH App': {
+                    title: 'HLTH App - Secure Health Data Platform',
+                    description: 'A Flutter application focused on secure health data management with strong encryption, secure authentication, and privacy controls to protect sensitive medical information.',
+                    github: 'https://github.com/Darry1968/hlth_flutter',
+                    demo: '#'
+                },
+                'Vending Machine Python': {
+                    title: 'Vending Machine Simulator',
+                    description: 'A Python-based vending machine simulator with a focus on secure transaction processing and protection against common security vulnerabilities.',
+                    github: 'https://github.com/Darry1968/Vending-machine-python',
+                    demo: '#'
+                }
+            };
+
+            // Get the modal element
+            const modal = document.getElementById('project-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const githubLink = document.getElementById('github-link');
+            const demoLink = document.getElementById('demo-link');
+            const closeModal = document.querySelector('.close-modal');
+
+            // Add click event to all project titles
+            const projectTitles = document.querySelectorAll('.project-sub-title');
+            projectTitles.forEach(title => {
+                title.addEventListener('click', function () {
+                    const projectName = this.textContent;
+                    const details = projectDetails[projectName];
+
+                    if (details) {
+                        modalTitle.textContent = details.title;
+                        modalDescription.textContent = details.description;
+                        githubLink.href = details.github;
+                        demoLink.href = details.demo;
+
+                        // Show the modal
+                        modal.style.display = 'block';
+                    }
+                });
+            });
+
+            // Close the modal when clicking the X
+            closeModal.addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+
+            // Close the modal when clicking outside of it
+            window.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        // Add scroll reveal effect
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section');
+
+            const revealSection = function (entries, observer) {
+                const [entry] = entries;
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-reveal');
+                }
+            };
+
+            const sectionObserver = new IntersectionObserver(revealSection, {
+                root: null,
+                threshold: 0.15,
+            });
+
+            sections.forEach(function (section) {
+                sectionObserver.observe(section);
+                section.classList.add('section-hidden');
+            });
+        });
     </script>
 </body>
 
