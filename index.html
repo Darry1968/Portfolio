@@ -130,6 +130,111 @@
             color: #ff003c;
             text-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
         }
+
+        /* Fixed navbar styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+        }
+
+        /* Fixed home section text alignment */
+        .home .home-content .text-3 {
+            font-size: 40px;
+            margin: 5px 0;
+            animation: fadeInUp 1s ease 0.4s both;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .home .home-content .text-3 span {
+            color: var(--primary-color);
+            font-weight: 500;
+            position: relative;
+            animation: typing 4s steps(20) infinite;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        /* Fix for UDP joke in About section */
+        .about .about-content .right-column .text {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-family: monospace;
+            white-space: normal;
+            overflow: visible;
+            border-right: none;
+            animation: none;
+            position: relative;
+            padding-right: 10px;
+        }
+
+        .about .about-content .right-column .text::after {
+            content: "|";
+            position: absolute;
+            right: 0;
+            top: 0;
+            animation: blink 1s step-end infinite;
+        }
+
+        /* Enhanced Skills Section */
+        .skills .skill-content .left li .bar {
+            height: 8px;
+            background: var(--light-bg);
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .skills .skill-content .left li .bar span {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), #4dffb4);
+            box-shadow: 0 0 10px var(--primary-color);
+            border-radius: 10px;
+            position: relative;
+            animation: progressFill 2.5s ease forwards;
+        }
+
+        .skills .skill-content .left li .bar span::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            animation: progressGlow 3s linear infinite;
+        }
+
+        .skills .skill-content .left li h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .skills .skill-content .left li h3::after {
+            content: attr(data-percent);
+            font-size: 14px;
+            color: var(--primary-color);
+            background: rgba(0, 255, 140, 0.1);
+            padding: 3px 8px;
+            border-radius: 5px;
+            border: 1px solid var(--primary-color);
+        }
+
+        /* Create project modal */
+        #project-modal {
+            display: none;
+        }
     </style>
 </head>
 
@@ -161,14 +266,13 @@
                 <div class="home-content">
                     <div class="text-1">Hey, my name is</div>
                     <div class="text-2">Darshan Soni</div>
-                    <div class="text-3">And I'm a <span>Security Researcher</span></div>
+                    <div class="text-3">And I'm a <span class="typing">Security Researcher</span></div>
                     <br>
                     <div class="social-icons">
                         <a href="https://www.linkedin.com/in/darshan-soni-0759a722a/" target="_blank"><i
                                 class="fab fa-linkedin"></i></a>
                         <a href="https://github.com/Darry1968" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://blog.na5hv4r.me/" target="_blank"><i class="fas fa-blog"></i></a>
-
                     </div>
                 </div>
             </div>
@@ -184,7 +288,8 @@
                     <img src="./assets/DarshanSoni.jpg" alt="My Image">
                 </div>
                 <div class="right-column">
-                    <div class="text">"I would tell you a joke about an UDP packet, but you might not get it."</div>
+                    <div class="text" id="cyber-joke">"I would tell you a joke about an UDP packet, but you might not
+                        get it."</div>
                     <p>
                     <ul>
                         <li>Hello there! 👋 I'm a passionate Fourth-year CSE student with a
@@ -231,19 +336,22 @@
                 <div class="left">
                     <div class="text">Skills</div>
                     <li>
-                        <h3>Linux</h3><span class="bar"><span class="Linux"></span></span>
+                        <h3 data-percent="90%">Linux</h3><span class="bar"><span class="Linux"></span></span>
                     </li>
                     <li>
-                        <h3>Networking</h3><span class="bar"><span class="Networking"></span></span>
+                        <h3 data-percent="85%">Networking</h3><span class="bar"><span class="Networking"></span></span>
                     </li>
                     <li>
-                        <h3>Programming</h3><span class="bar"><span class="Programming"></span></span>
+                        <h3 data-percent="80%">Programming</h3><span class="bar"><span
+                                class="Programming"></span></span>
                     </li>
                     <li>
-                        <h3>Capture The Flag</h3><span class="bar"><span class="Capture-The-Flag"></span></span>
+                        <h3 data-percent="95%">Capture The Flag</h3><span class="bar"><span
+                                class="Capture-The-Flag"></span></span>
                     </li>
                     <li>
-                        <h3>Ethical Hacking</h3><span class="bar"><span class="Ethical-Hacking"></span></span>
+                        <h3 data-percent="88%">Ethical Hacking</h3><span class="bar"><span
+                                class="Ethical-Hacking"></span></span>
                     </li>
                 </div>
                 <div class="right">
@@ -311,7 +419,6 @@
         </div>
     </section>
 
-
     <!-- contact section start -->
     <section class="contact" id="contact">
         <div class="max-width">
@@ -343,7 +450,6 @@
                                         class="fab fa-instagram"></i></a>
                                 <a href="https://discordapp.com/users/959868779486126102" target="_blank"><i
                                         class="fab fa-discord"></i></a>
-
                             </div>
                         </div>
                     </div>
@@ -354,7 +460,6 @@
                     <br>
                     <form action="#">
                         <div class="fields">
-
                             <div class="button-area">
                                 <button onclick="window.location.href='mailto:darshan@na5hv4r.me';">Hello</button>
                             </div>
@@ -362,8 +467,29 @@
                     </form>
                 </div>
             </div>
+        </div>
     </section>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <div class="modal-buttons">
+                <a href="#" id="github-link" class="modal-btn" target="_blank">GitHub</a>
+                <a href="#" id="demo-link" class="modal-btn" target="_blank">Live Demo</a>
+            </div>
+        </div>
+    </div>
+
     <script>
+        hamburger = document.querySelector(".hamburger");
+        hamburger.onclick = function () {
+            navBar = document.querySelector(".navbar");
+            navBar.classList.toggle("active");
+        }
+
         // Project modal functionality
         document.addEventListener('DOMContentLoaded', function () {
             // Project details 
@@ -455,6 +581,42 @@
                 sectionObserver.observe(section);
                 section.classList.add('section-hidden');
             });
+        });
+
+        // Rotating tech jokes
+        document.addEventListener('DOMContentLoaded', function () {
+            const jokes = [
+                "I would tell you a joke about an UDP packet, but you might not get it.",
+                "Are you a TCP packet? Cuz I wanna make some handshakes with you.",
+                "Are you a primary key? 'Cause you're the only one I need to relate to.",
+                "Are you vulnerable to XSS? Cuz I see those reflections of mine in your eyes.",
+                "Are you a private IP? Cuz I need to get into your network just to make a connection with you.",
+                "Are you the root user? Cause I'm trying to escalate my privileges.",
+                "Is your password 'secure'? Because I can crack it with my charm.",
+                "My love for you has no boundaries, just like a buffer overflow.",
+                "I'd explain DNS to you, but it might not resolve anything between us.",
+                "Are you HTTP? Because without you, I'm just ://",
+            ];
+
+            const jokeElement = document.getElementById('cyber-joke');
+            let currentJoke = 0;
+
+            // Set initial joke
+            jokeElement.textContent = `"${jokes[0]}"`;
+
+            // Change joke every 8 seconds
+            setInterval(() => {
+                currentJoke = (currentJoke + 1) % jokes.length;
+                jokeElement.style.opacity = 0;
+
+                setTimeout(() => {
+                    jokeElement.textContent = `"${jokes[currentJoke]}"`;
+                    jokeElement.style.opacity = 1;
+                }, 500);
+            }, 8000);
+
+            // Add transition for smooth effect
+            jokeElement.style.transition = 'opacity 0.5s ease';
         });
     </script>
 </body>
