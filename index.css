@@ -55,6 +55,10 @@ body::before {
     /* animation: scanlineAnim 60s linear infinite; */ /* Animation disabled for now */
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 /* @keyframes scanlineAnim {
     0% { background-position: 0 0; }
     100% { background-position: 0 100%; }
@@ -203,7 +207,8 @@ header .navbar ul li a.active::before {
 .hamburger .line {
     width: 30px;
     height: 3px;
-    background: var(--mr-font-light);
+    /* background: var(--mr-font-light); OLD */
+    background: var(--mr-font-green); /* NEW - for better visibility */
     margin: 6px 0;
     transition: var(--transition);
 }
@@ -232,10 +237,11 @@ header .navbar ul li a.active::before {
 }
 
 .home .home-content {
-    max-width: 600px;
     display: flex;
     flex-direction: column;
     animation: fadeIn 1.5s;
+    align-items: center; /* This will center the #terminal */
+    width: 100%; /* Ensure it takes available width within .max-width parent */
     /* position: fixed; */
 }
 
