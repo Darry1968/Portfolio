@@ -134,7 +134,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 80px;
+            padding: 20px 35px;
         }
 
         /* Fixed home section text alignment */
@@ -264,21 +264,22 @@
                 <div class="home-content">
                     <div id="terminal">
                         <div id="terminal-output">
-                            <div>Welcome, user. Initializing fsociety_OS...</div>
+                            <div>Welcome, user. Initializing na5hv4r_OS...</div>
                             <div>System online. Type 'help' for a list of commands.</div>
                             <div>Last login: <span id="last-login-time"></span></div>
                             <div>----------------------------------------------------------------------</div>
                         </div>
                         <div id="terminal-input-line">
-                            <span id="terminal-prompt">guest@fsociety:~$&nbsp;</span>
+                            <span id="terminal-prompt">guest@na5hv4r:~$&nbsp;</span>
                             <input type="text" id="terminal-input" autofocus autocomplete="off" />
                         </div>
                     </div>
                     <!-- Keep social icons if desired, or integrate them thematically -->
                     <div class="social-icons" style="margin-top: 20px; text-align: center;">
-                         <a href="https://www.linkedin.com/in/darshan-soni-0759a722a/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                         <a href="https://github.com/Darry1968" target="_blank"><i class="fab fa-github"></i></a>
-                         <a href="https://blog.na5hv4r.me/" target="_blank"><i class="fas fa-blog"></i></a>
+                        <a href="https://www.linkedin.com/in/darshan-soni-0759a722a/" target="_blank"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Darry1968" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://blog.na5hv4r.me/" target="_blank"><i class="fas fa-blog"></i></a>
                     </div>
                 </div>
             </div>
@@ -467,7 +468,8 @@
                     <form action="#">
                         <div class="fields">
                             <div class="button-area">
-                                <button data-text="Hello" onclick="window.location.href='mailto:darshan@na5hv4r.me';">Hello</button>
+                                <button data-text="Hello"
+                                    onclick="window.location.href='mailto:darshan@na5hv4r.me';">Hello</button>
                             </div>
                         </div>
                     </form>
@@ -484,7 +486,7 @@
             <p id="modal-description"></p>
             <div class="modal-buttons">
                 <a href="#" id="github-link" class="modal-btn" target="_blank">GitHub</a>
-                <a href="#" id="demo-link" class="modal-btn" target="_blank">Live Demo</a>
+                <!-- <a href="#" id="demo-link" class="modal-btn" target="_blank">Live Demo</a> -->
             </div>
         </div>
     </div>
@@ -494,6 +496,8 @@
         hamburger.onclick = function () {
             navBar = document.querySelector(".navbar");
             navBar.classList.toggle("active");
+            // Add this line:
+            document.body.classList.toggle("no-scroll", navBar.classList.contains("active"));
         }
 
         // Project modal functionality
@@ -518,7 +522,7 @@
                     github: 'https://github.com/Darry1968/hlth_flutter',
                     demo: '#'
                 },
-                'OPERATION: VENDGUARD': {
+                'PROJECT: Vending Machine': {
                     title: 'OPERATION: VENDGUARD // Target: Automated Retail Systems',
                     description: '<b>OBJECTIVE:</b> Analyze and secure the transaction logic of a Python-based vending machine simulator.<br><b>INTEL:</b> Focus on preventing unauthorized dispensing, payment bypass, inventory manipulation, and denial-of-service.<br><b>VECTORS:</b> Input validation flaws, race conditions, insecure state management.<br><b>STATUS:</b> Simulation Complete // Report Submitted',
                     github: 'https://github.com/Darry1968/Vending-machine-python',
