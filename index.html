@@ -5,15 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="/assets/Nashvar logo.png">
     <title>Portfolio - Darshan Soni</title>
     <script src="js/terminal-annimation.js"></script>
     <script src="js/glitch-effect.js"></script>
     <script src="js/typing-effect.js"></script>
-    <script src="js/particles-effect.js"></script>
+    <!-- <script src="js/particles-effect.js"></script> -->
 
     <!-- Add CSS for modal in head -->
     <style>
@@ -250,11 +248,11 @@
 
         <nav class="navbar">
             <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="active" data-text="Home">Home</a></li>
+                <li><a href="#about" data-text="About">About</a></li>
+                <li><a href="#skills" data-text="Skills">Skills</a></li>
+                <li><a href="#projects" data-text="Exploits">Exploits</a></li>
+                <li><a href="#contact" data-text="Contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -264,15 +262,23 @@
         <section class="home" id="home">
             <div class="max-width">
                 <div class="home-content">
-                    <div class="text-1">Hey, my name is</div>
-                    <div class="text-2">Darshan Soni</div>
-                    <div class="text-3">And I'm a <span class="typing">Security Researcher</span></div>
-                    <br>
-                    <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/darshan-soni-0759a722a/" target="_blank"><i
-                                class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/Darry1968" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://blog.na5hv4r.me/" target="_blank"><i class="fas fa-blog"></i></a>
+                    <div id="terminal">
+                        <div id="terminal-output">
+                            <div>Welcome, user. Initializing fsociety_OS...</div>
+                            <div>System online. Type 'help' for a list of commands.</div>
+                            <div>Last login: <span id="last-login-time"></span></div>
+                            <div>----------------------------------------------------------------------</div>
+                        </div>
+                        <div id="terminal-input-line">
+                            <span id="terminal-prompt">guest@fsociety:~$&nbsp;</span>
+                            <input type="text" id="terminal-input" autofocus autocomplete="off" />
+                        </div>
+                    </div>
+                    <!-- Keep social icons if desired, or integrate them thematically -->
+                    <div class="social-icons" style="margin-top: 20px; text-align: center;">
+                         <a href="https://www.linkedin.com/in/darshan-soni-0759a722a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                         <a href="https://github.com/Darry1968" target="_blank"><i class="fab fa-github"></i></a>
+                         <a href="https://blog.na5hv4r.me/" target="_blank"><i class="fas fa-blog"></i></a>
                     </div>
                 </div>
             </div>
@@ -310,7 +316,7 @@
                         </li>
                     </ul>
                     </p>
-                    <a href="Resume.pdf">My Resume</a>
+                    <a href="Resume.pdf" data-text="My Resume">My Resume</a>
                 </div>
             </div>
         </div>
@@ -371,16 +377,16 @@
     <!-- project section -->
     <section class="projects" id="projects">
         <div class="max-width">
-            <h2 class="title">My Projects</h2>
+            <h2 class="title">Exploits</h2>
             <div class="projects-content">
                 <div class="project-container">
                     <div class="details-container">
                         <div class="artical-container">
                             <img src="./assets/Argus.png" alt="project1" class="project-img">
                         </div>
-                        <h2 class="project-sub-title">API-Vulnerability-scanner</h2>
+                        <h2 class="project-sub-title" data-text="OPERATION: ARGUS">OPERATION: ARGUS</h2>
                         <div class="btn-container">
-                            <button class="btn btn-color-2 project-btn"
+                            <button class="btn btn-color-2 project-btn" data-text="Github"
                                 onclick="location.href='https://github.com/Darry1968/argus'">Github</button>
                         </div>
                     </div>
@@ -388,9 +394,9 @@
                         <div class="artical-container">
                             <img src="./assets/CipherX.png" alt="project2" class="project-img">
                         </div>
-                        <h2 class="project-sub-title">Cipher Identifier</h2>
+                        <h2 class="project-sub-title" data-text="OPERATION: CIPHERX">OPERATION: CIPHERX</h2>
                         <div class="btn-container">
-                            <button class="btn btn-color-2 project-btn"
+                            <button class="btn btn-color-2 project-btn" data-text="Github"
                                 onclick="location.href='https://github.com/Darry1968/cipherx'">Github</button>
                         </div>
                     </div>
@@ -398,9 +404,9 @@
                         <div class="artical-container">
                             <img src="./assets/HLTH.jpg" alt="project3" class="project-img">
                         </div>
-                        <h2 class="project-sub-title">HLTH App</h2>
+                        <h2 class="project-sub-title" data-text="OPERATION: HLTH SECURE">OPERATION: HLTH SECURE</h2>
                         <div class="btn-container">
-                            <button class="btn btn-color-2 project-btn"
+                            <button class="btn btn-color-2 project-btn" data-text="Github"
                                 onclick="location.href='https://github.com/Darry1968/hlth_flutter'">Github</button>
                         </div>
                     </div>
@@ -408,9 +414,9 @@
                         <div class="artical-container">
                             <img src="./assets/eVerse.jpg" alt="project4" class="project-img">
                         </div>
-                        <h2 class="project-sub-title">Vending Machine Python</h2>
+                        <h2 class="project-sub-title" data-text="OPERATION: VENDGUARD">OPERATION: VENDGUARD</h2>
                         <div class="btn-container">
-                            <button class="btn btn-color-2 project-btn"
+                            <button class="btn btn-color-2 project-btn" data-text="Github"
                                 onclick="location.href='https://github.com/Darry1968/Vending-machine-python'">Github</button>
                         </div>
                     </div>
@@ -461,7 +467,7 @@
                     <form action="#">
                         <div class="fields">
                             <div class="button-area">
-                                <button onclick="window.location.href='mailto:darshan@na5hv4r.me';">Hello</button>
+                                <button data-text="Hello" onclick="window.location.href='mailto:darshan@na5hv4r.me';">Hello</button>
                             </div>
                         </div>
                     </form>
@@ -494,27 +500,27 @@
         document.addEventListener('DOMContentLoaded', function () {
             // Project details 
             const projectDetails = {
-                'API-Vulnerability-scanner': {
-                    title: 'ARGUS - API Vulnerability Scanner',
-                    description: 'A tool designed to automate the scanning of API endpoints for common security vulnerabilities. It can identify issues like CORS misconfigurations, injection vulnerabilities, broken authentication, and more.',
+                'OPERATION: ARGUS': {
+                    title: 'OPERATION: ARGUS // Target: API Vulnerabilities',
+                    description: '<b>OBJECTIVE:</b> Systematically identify and report common security vulnerabilities in API endpoints.<br><b>INTEL:</b> Scans for CORS misconfigurations, injection flaws (SQLi, XSS), broken authentication/authorization, and excessive data exposure.<br><b>METHODOLOGY:</b> Automated probing and analysis of target APIs based on OpenAPI specs or manual endpoint definition.<br><b>STATUS:</b> Active Development // Prototype Deployed',
                     github: 'https://github.com/Darry1968/argus',
-                    demo: '#'
+                    demo: '#' // Keep or update demo link
                 },
-                'Cipher Identifier': {
-                    title: 'CipherX - Cipher Identifier & Decoder',
-                    description: 'An intelligent tool that can identify and decode various types of encryption and encoding methods. It uses pattern recognition to determine the likely cipher type and offers decryption options.',
+                'OPERATION: CIPHERX': {
+                    title: 'OPERATION: CIPHERX // Target: Encrypted/Encoded Comms',
+                    description: '<b>OBJECTIVE:</b> Identify and decode various cryptographic ciphers and encoding schemes from captured data streams.<br><b>INTEL:</b> Employs pattern recognition, frequency analysis, and known algorithm signatures.<br><b>CAPABILITIES:</b> Base64, Caesar, Vigenere, simple XOR, ROT13, etc. (expandable module system).<br><b>STATUS:</b> Operational // Continuous Learning Mode',
                     github: 'https://github.com/Darry1968/cipherx',
                     demo: '#'
                 },
-                'HLTH App': {
-                    title: 'HLTH App - Secure Health Data Platform',
-                    description: 'A Flutter application focused on secure health data management with strong encryption, secure authentication, and privacy controls to protect sensitive medical information.',
+                'OPERATION: HLTH SECURE': {
+                    title: 'OPERATION: HLTH SECURE // Target: Sensitive Health Data',
+                    description: '<b>OBJECTIVE:</b> Develop a secure mobile platform (Flutter) for managing personal health records with robust end-to-end encryption.<br><b>INTEL:</b> Focus on data integrity, patient privacy, secure authentication (MFA), and encrypted data-at-rest & in-transit.<br><b>THREAT MODEL:</b> Unauthorized access, data breaches, replay attacks.<br><b>STATUS:</b> Proof-of-Concept Phase',
                     github: 'https://github.com/Darry1968/hlth_flutter',
                     demo: '#'
                 },
-                'Vending Machine Python': {
-                    title: 'Vending Machine Simulator',
-                    description: 'A Python-based vending machine simulator with a focus on secure transaction processing and protection against common security vulnerabilities.',
+                'OPERATION: VENDGUARD': {
+                    title: 'OPERATION: VENDGUARD // Target: Automated Retail Systems',
+                    description: '<b>OBJECTIVE:</b> Analyze and secure the transaction logic of a Python-based vending machine simulator.<br><b>INTEL:</b> Focus on preventing unauthorized dispensing, payment bypass, inventory manipulation, and denial-of-service.<br><b>VECTORS:</b> Input validation flaws, race conditions, insecure state management.<br><b>STATUS:</b> Simulation Complete // Report Submitted',
                     github: 'https://github.com/Darry1968/Vending-machine-python',
                     demo: '#'
                 }
@@ -619,6 +625,7 @@
             jokeElement.style.transition = 'opacity 0.5s ease';
         });
     </script>
+    <script src="js/terminal-hero.js"></script>
 </body>
 
 </html>
