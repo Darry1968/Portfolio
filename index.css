@@ -3,12 +3,14 @@
     --mr-bg-dark: #0A0A0A;
     --mr-bg-medium: #141414;
     --mr-bg-light: #282828;
-    --mr-font-green: #00FF41;
+    --mr-font-green: #00c3ff;
     --mr-font-red: #FF003C;
     --mr-font-light: #E0E0E0;
     --mr-font-dim: #A0A0A0;
-    --box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2); /* Updated alpha for green */
-    --glow-shadow: 0 0 10px rgba(0, 255, 65, 0.4); /* Updated alpha for green */
+    --box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2);
+    /* Updated alpha for green */
+    --glow-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+    /* Updated alpha for green */
     --transition: all 0.3s ease;
     --font-main: 'Source Code Pro', 'Courier New', monospace;
 }
@@ -24,9 +26,10 @@
     scroll-behavior: smooth;
 }
 
-html, body {
+html,
+/* body {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20"><rect x="0" y="0" width="10" height="20" fill="%2300FF41"><animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" /></rect></svg>') 0 10, auto;
-}
+} */
 
 body {
     background-color: var(--mr-bg-dark);
@@ -42,17 +45,18 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0) 0px,
-        rgba(0, 0, 0, 0) 1px,
-        var(--mr-font-green, #00FF41) 2px,
-        rgba(0, 0, 0, 0) 3px
-    );
-    opacity: 0.05; /* Make it subtle */
-    z-index: -10; /* Ensure it's behind everything */
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0) 0px,
+            rgba(0, 0, 0, 0) 1px,
+            var(--mr-font-green, #00FF41) 2px,
+            rgba(0, 0, 0, 0) 3px);
+    opacity: 0.05;
+    /* Make it subtle */
+    z-index: -10;
+    /* Ensure it's behind everything */
     pointer-events: none;
-    /* animation: scanlineAnim 60s linear infinite; */ /* Animation disabled for now */
+    /* animation: scanlineAnim 60s linear infinite; */
+    /* Animation disabled for now */
 }
 
 body.no-scroll {
@@ -71,6 +75,7 @@ body.no-scroll {
 
 .max-width {
     max-width: 1300px;
+    width: 100%;
     padding: 0 80px;
     margin: auto;
 }
@@ -118,8 +123,9 @@ section {
 }
 
 .title:hover {
-  animation: subtleFlicker 0.5s infinite alternate;
-  color: var(--mr-font-green); /* Optional: change color to green on hover */
+    animation: subtleFlicker 0.5s infinite alternate;
+    color: var(--mr-font-green);
+    /* Optional: change color to green on hover */
 }
 
 /* ===== HEADER & NAVIGATION ===== */
@@ -127,10 +133,12 @@ header {
     position: fixed;
     width: 100%;
     z-index: 999;
-    padding: 20px 80px;
-    background: rgba(10, 10, 10, 0.9); /* Assuming this is meant to be dark, like mr-bg-dark */
+    padding: 20px 35px;
+    background: rgba(10, 10, 10, 0.9);
+    /* Assuming this is meant to be dark, like mr-bg-dark */
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 255, 65, 0.1); /* Updated alpha for green */
+    border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+    /* Updated alpha for green */
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
     transition: var(--transition);
     display: flex;
@@ -142,21 +150,25 @@ header .logo {
     font-size: 28px;
     font-weight: 600;
     color: var(--mr-font-green);
-    text-shadow: 0 0 10px rgba(0, 255, 65, 0.3); /* Updated alpha for green */
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+    /* Updated alpha for green */
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
     0% {
-        text-shadow: 0 0 5px rgba(0, 255, 65, 0.3); /* Updated alpha for green */
+        text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+        /* Updated alpha for green */
     }
 
     50% {
-        text-shadow: 0 0 20px rgba(0, 255, 65, 0.8); /* Updated alpha for green */
+        text-shadow: 0 0 20px rgba(0, 255, 65, 0.8);
+        /* Updated alpha for green */
     }
 
     100% {
-        text-shadow: 0 0 5px rgba(0, 255, 65, 0.3); /* Updated alpha for green */
+        text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
+        /* Updated alpha for green */
     }
 }
 
@@ -208,7 +220,8 @@ header .navbar ul li a.active::before {
     width: 30px;
     height: 3px;
     /* background: var(--mr-font-light); OLD */
-    background: var(--mr-font-green); /* NEW - for better visibility */
+    background: var(--mr-font-green);
+    /* NEW - for better visibility */
     margin: 6px 0;
     transition: var(--transition);
 }
@@ -240,8 +253,10 @@ header .navbar ul li a.active::before {
     display: flex;
     flex-direction: column;
     animation: fadeIn 1.5s;
-    align-items: center; /* This will center the #terminal */
-    width: 100%; /* Ensure it takes available width within .max-width parent */
+    align-items: center;
+    /* This will center the #terminal */
+    width: 100%;
+    /* Ensure it takes available width within .max-width parent */
     /* position: fixed; */
 }
 
@@ -267,7 +282,8 @@ header .navbar ul li a.active::before {
     font-weight: 600;
     margin-left: -3px;
     color: var(--mr-font-green);
-    text-shadow: 0 0 15px rgba(0, 255, 65, 0.4); /* Updated alpha for green */
+    text-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+    /* Updated alpha for green */
     animation: fadeInUp 1s ease 0.2s both;
 }
 
@@ -322,7 +338,8 @@ header .navbar ul li a.active::before {
     align-items: center;
     width: 50px;
     height: 50px;
-    background: rgba(42, 42, 42, 0.5); /* This could be --mr-bg-light or medium if we want consistency */
+    background: rgba(42, 42, 42, 0.5);
+    /* This could be --mr-bg-light or medium if we want consistency */
     border-radius: 50%;
     border: 2px solid var(--mr-font-green);
     color: var(--mr-font-green);
@@ -334,7 +351,8 @@ header .navbar ul li a.active::before {
     background: var(--mr-font-green);
     color: var(--mr-bg-dark);
     transform: translateY(-5px);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); /* Updated alpha for green */
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+    /* Updated alpha for green */
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -359,7 +377,8 @@ header .navbar ul li a.active::before {
 
 .about .about-content .Left-column img:hover {
     transform: scale(1.03);
-    box-shadow: 0 0 25px rgba(0, 255, 65, 0.3); /* Updated alpha for green */
+    box-shadow: 0 0 25px rgba(0, 255, 65, 0.3);
+    /* Updated alpha for green */
 }
 
 .about .about-content .right-column {
@@ -378,7 +397,8 @@ header .navbar ul li a.active::before {
 
 .about .about-content .right-column a {
     display: inline-block;
-    background: var(--mr-bg-dark); /* Or transparent if preferred */
+    background: var(--mr-bg-dark);
+    /* Or transparent if preferred */
     color: var(--mr-font-green);
     font-size: 18px;
     font-weight: 600;
@@ -406,7 +426,8 @@ header .navbar ul li a.active::before {
 
 .about .about-content .right-column a:hover {
     color: var(--mr-bg-dark);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); /* Updated alpha for green */
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+    /* Updated alpha for green */
 }
 
 .about .about-content .right-column a:hover::before {
@@ -431,7 +452,8 @@ header .navbar ul li a.active::before {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: var(--transition);
-    border: 1px solid var(--mr-font-green); /* Changed to green, could be dimmed */
+    border: 1px solid var(--mr-font-green);
+    /* Changed to green, could be dimmed */
 }
 
 .skills .skill-content .left:hover,
@@ -439,7 +461,8 @@ header .navbar ul li a.active::before {
 .skills .skill-content .right:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--mr-font-green); /* Intensified border on hover */
+    border: 1px solid var(--mr-font-green);
+    /* Intensified border on hover */
 }
 
 .skills .skill-content .text {
@@ -471,7 +494,8 @@ header .navbar ul li a.active::before {
 
 .skills .skill-content .left li .bar {
     height: 8px;
-    background: var(--mr-bg-light); /* Darker background for the bar */
+    background: var(--mr-bg-light);
+    /* Darker background for the bar */
     position: relative;
     border-radius: 10px;
     overflow: hidden;
@@ -484,8 +508,10 @@ header .navbar ul li a.active::before {
     display: block;
     height: 100%;
     width: 0;
-    background: var(--mr-font-green); /* Solid green for the bar fill */
-    box-shadow: 0 0 10px var(--mr-font-green); /* Glow effect for the bar */
+    background: var(--mr-font-green);
+    /* Solid green for the bar fill */
+    box-shadow: 0 0 10px var(--mr-font-green);
+    /* Glow effect for the bar */
     border-radius: 10px;
     position: relative;
 }
@@ -604,7 +630,8 @@ header .navbar ul li a.active::before {
     border-radius: 15px;
     padding: 20px;
     transition: var(--transition);
-    border: 1px solid var(--mr-font-green); /* Changed to green, could be dimmed */
+    border: 1px solid var(--mr-font-green);
+    /* Changed to green, could be dimmed */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     height: 100%;
     display: flex;
@@ -614,7 +641,8 @@ header .navbar ul li a.active::before {
 .projects .details-container:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--mr-font-green); /* Intensified border on hover */
+    border: 1px solid var(--mr-font-green);
+    /* Intensified border on hover */
 }
 
 .projects .artical-container {
@@ -647,7 +675,8 @@ header .navbar ul li a.active::before {
 }
 
 .projects .project-sub-title:hover {
-    color: var(--mr-font-red); /* Using red for accent hover */
+    color: var(--mr-font-red);
+    /* Using red for accent hover */
 }
 
 .projects .btn-container {
@@ -657,7 +686,8 @@ header .navbar ul li a.active::before {
 }
 
 .projects .project-btn {
-    background: var(--mr-bg-dark); /* Or transparent */
+    background: var(--mr-bg-dark);
+    /* Or transparent */
     color: var(--mr-font-green);
     border: 2px solid var(--mr-font-green);
     padding: 10px 20px;
@@ -685,7 +715,8 @@ header .navbar ul li a.active::before {
 
 .projects .project-btn:hover {
     color: var(--mr-bg-dark);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); /* Updated alpha for green */
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+    /* Updated alpha for green */
 }
 
 .projects .project-btn:hover::before {
@@ -695,14 +726,19 @@ header .navbar ul li a.active::before {
 /* ===== CONTACT SECTION ===== */
 
 @keyframes subtleFlicker {
-  0%, 100% {
-    opacity: 1;
-    text-shadow: 0 0 5px rgba(0, 255, 65, 0.2); /* Subtle green glow */
-  }
-  50% {
-    opacity: 0.9;
-    text-shadow: 0 0 10px rgba(0, 255, 65, 0.4); /* Slightly more intense glow */
-  }
+
+    0%,
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 5px rgba(0, 255, 65, 0.2);
+        /* Subtle green glow */
+    }
+
+    50% {
+        opacity: 0.9;
+        text-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+        /* Slightly more intense glow */
+    }
 }
 
 .contact .contact-content {
@@ -727,13 +763,15 @@ header .navbar ul li a.active::before {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: var(--transition);
-    border: 1px solid var(--mr-font-green); /* Changed to green, could be dimmed */
+    border: 1px solid var(--mr-font-green);
+    /* Changed to green, could be dimmed */
 }
 
 .contact .contact-content .left .box:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--mr-font-green); /* Intensified border on hover */
+    border: 1px solid var(--mr-font-green);
+    /* Intensified border on hover */
 }
 
 .contact .contact-content .left .box .text h3 {
@@ -759,7 +797,8 @@ header .navbar ul li a.active::before {
     align-items: center;
     width: 40px;
     height: 40px;
-    background: rgba(42, 42, 42, 0.5); /* Could be --mr-bg-light or medium */
+    background: rgba(42, 42, 42, 0.5);
+    /* Could be --mr-bg-light or medium */
     border-radius: 50%;
     border: 2px solid var(--mr-font-green);
     color: var(--mr-font-green);
@@ -771,21 +810,25 @@ header .navbar ul li a.active::before {
     background: var(--mr-font-green);
     color: var(--mr-bg-dark);
     transform: translateY(-5px);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); /* Updated alpha for green */
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+    /* Updated alpha for green */
 }
 
 .contact .contact-content .right {
-    background: var(--mr-bg-light); /* Lighter than left boxes */
+    background: var(--mr-bg-light);
+    /* Lighter than left boxes */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: var(--transition);
-    border: 1px solid var(--mr-font-green); /* Changed to green, could be dimmed */
+    border: 1px solid var(--mr-font-green);
+    /* Changed to green, could be dimmed */
 }
 
 .contact .contact-content .right:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--mr-font-green); /* Intensified border on hover */
+    border: 1px solid var(--mr-font-green);
+    /* Intensified border on hover */
 }
 
 .contact .contact-content .right h2 {
@@ -801,7 +844,8 @@ header .navbar ul li a.active::before {
 
 .contact .contact-content .right button {
     display: inline-block;
-    background: var(--mr-bg-dark); /* Or transparent */
+    background: var(--mr-bg-dark);
+    /* Or transparent */
     color: var(--mr-font-green);
     font-size: 18px;
     font-weight: 600;
@@ -830,7 +874,8 @@ header .navbar ul li a.active::before {
 
 .contact .contact-content .right button:hover {
     color: var(--mr-bg-dark);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); /* Updated alpha for green */
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+    /* Updated alpha for green */
 }
 
 .contact .contact-content .right button:hover::before {
@@ -906,11 +951,13 @@ header .navbar ul li a.active::before {
         right: -100%;
         width: 270px;
         height: 100vh;
-        background: var(--mr-bg-medium); /* Updated background */
+        background: var(--mr-bg-medium);
+        /* Updated background */
         padding-top: 80px;
         transition: var(--transition);
         z-index: 999;
-        border-left: 1px solid rgba(0, 255, 65, 0.1); /* Updated alpha for green */
+        border-left: 1px solid rgba(0, 255, 65, 0.1);
+        /* Updated alpha for green */
         box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
     }
 
@@ -919,7 +966,8 @@ header .navbar ul li a.active::before {
     }
 
     .navbar ul {
-        display: block;
+        display: flex;
+        flex-direction: column;
     }
 
     .navbar ul li {
@@ -997,6 +1045,35 @@ header .navbar ul li a.active::before {
     }
 }
 
+@media screen and (max-width: 400px) {
+    .home .home-content .text-2 {
+        font-size: 32px;
+    }
+
+    .home .home-content .text-3 {
+        font-size: 20px;
+    }
+
+    #terminal {
+        width: 95%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .projects .project-sub-title {
+        font-size: 18px;
+    }
+
+    header .navbar ul li a {
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+}
+
 /* ===== TERMINAL ANIMATION ===== */
 .terminal-animation {
     position: fixed;
@@ -1005,7 +1082,8 @@ header .navbar ul li a.active::before {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: -5; /* Lowered z-index */
+    z-index: -5;
+    /* Lowered z-index */
     opacity: 0.08;
 }
 
@@ -1013,8 +1091,10 @@ header .navbar ul li a.active::before {
     position: absolute;
     font-family: monospace;
     font-size: 14px;
-    color: var(--mr-font-green); /* Already using the correct variable */
-    text-shadow: 0 0 5px var(--mr-font-green); /* Already using the correct variable */
+    color: var(--mr-font-green);
+    /* Already using the correct variable */
+    text-shadow: 0 0 5px var(--mr-font-green);
+    /* Already using the correct variable */
     animation: matrixRain linear infinite;
 }
 
@@ -1037,24 +1117,31 @@ header .navbar ul li a.active::before {
 /* Terminal Animation Script will be added via JS */
 
 /* ===== HERO TERMINAL ===== */
-.home { /* Ensure home section still takes full viewport height */
+.home {
+    /* Ensure home section still takes full viewport height */
     display: flex;
-    align-items: center; /* Center terminal vertically */
-    justify-content: center; /* Center terminal horizontally */
+    align-items: center;
+    /* Center terminal vertically */
+    justify-content: center;
+    /* Center terminal horizontally */
 }
 
 #terminal {
-    width: 80%; /* Adjust width as needed */
+    width: 80%;
+    /* Adjust width as needed */
     max-width: 700px;
-    height: 400px; /* Adjust height as needed */
-    background-color: rgba(10, 10, 10, 0.85); /* Dark, slightly transparent background */
+    height: 400px;
+    /* Adjust height as needed */
+    background-color: rgba(10, 10, 10, 0.85);
+    /* Dark, slightly transparent background */
     border: 2px solid var(--mr-font-green);
     border-radius: 5px;
     padding: 15px;
     box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
     display: flex;
     flex-direction: column;
-    font-family: var(--font-main); /* Monospace font */
+    font-family: var(--font-main);
+    /* Monospace font */
 }
 
 #terminal-output {
@@ -1068,15 +1155,18 @@ header .navbar ul li a.active::before {
 
 #terminal-output div {
     margin-bottom: 5px;
-    word-break: break-all; /* Prevent long strings from breaking layout */
+    word-break: break-all;
+    /* Prevent long strings from breaking layout */
 }
 
 #terminal-output .command-output {
-    color: var(--mr-font-green); /* Output from commands */
+    color: var(--mr-font-green);
+    /* Output from commands */
 }
 
 #terminal-output .error-output {
-    color: var(--mr-font-red); /* Error messages */
+    color: var(--mr-font-red);
+    /* Error messages */
 }
 
 #terminal-input-line {
@@ -1108,26 +1198,35 @@ header .navbar ul li a.active::before {
 #terminal-output::-webkit-scrollbar {
     width: 8px;
 }
+
 #terminal-output::-webkit-scrollbar-track {
     background: var(--mr-bg-light);
 }
+
 #terminal-output::-webkit-scrollbar-thumb {
     background-color: var(--mr-font-green);
     border-radius: 4px;
 }
+
 #terminal-output::-webkit-scrollbar-thumb:hover {
-    background-color: #00cc33; /* Slightly darker green on hover */
+    background-color: #00cc33;
+    /* Slightly darker green on hover */
 }
 
 /* ===== GLITCH HOVER EFFECT ===== */
 @keyframes textGlitch {
-    2%, 64% {
+
+    2%,
+    64% {
         transform: translate(2px, 0) skew(0deg);
         opacity: 0.8;
     }
-    4%, 60% {
+
+    4%,
+    60% {
         transform: translate(-2px, 0) skew(0deg);
     }
+
     62% {
         transform: translate(0, 0) skew(5deg);
     }
@@ -1135,19 +1234,27 @@ header .navbar ul li a.active::before {
 
 /* Apply to navigation links and specified buttons */
 header .navbar ul li a,
-.button-link, /* A generic class for button-like links, if created */
-.projects .project-btn, /* Corrected selector */
-.about .about-content .right-column a, /* Resume button */
-.contact .contact-content .right button /* Contact button */
- {
-    position: relative; /* Needed for pseudo-elements if used later, good practice */
+.button-link,
+/* A generic class for button-like links, if created */
+.projects .project-btn,
+/* Corrected selector */
+.about .about-content .right-column a,
+/* Resume button */
+.contact .contact-content .right button
+
+/* Contact button */
+    {
+    position: relative;
+    /* Needed for pseudo-elements if used later, good practice */
 }
 
 header .navbar ul li a:hover,
 .button-link:hover,
-.projects .project-btn:hover, /* Corrected selector */
+.projects .project-btn:hover,
+/* Corrected selector */
 .about .about-content .right-column a:hover,
 .contact .contact-content .right button:hover {
-    animation: textGlitch 0.25s infinite cubic-bezier(.25,.46,.45,.94) both;
-    color: var(--mr-font-green); /* Ensure color changes on hover */
+    animation: textGlitch 0.25s infinite cubic-bezier(.25, .46, .45, .94) both;
+    color: var(--mr-font-green);
+    /* Ensure color changes on hover */
 }
