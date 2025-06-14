@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
         termElement.className = 'terminal-code';
         termElement.style.left = Math.random() * window.innerWidth + 'px';
         termElement.style.animationDuration = '4s';
-        termElement.style.color = '#ff003c';
+        termElement.style.color = 'var(--mr-font-red)';
         termElement.style.fontWeight = 'bold';
         termElement.style.fontSize = '18px';
         termElement.textContent = term;

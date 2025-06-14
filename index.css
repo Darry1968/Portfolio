@@ -1,17 +1,16 @@
 /* ===== GLOBAL STYLES ===== */
 :root {
-    --primary-color: #00ff8c;
-    --secondary-color: #001233;
-    --accent-color: #ff003c;
-    --dark-bg: #0a0a0a;
-    --medium-bg: #1a1a1a;
-    --light-bg: #2a2a2a;
-    --text-light: #f0f0f0;
-    --text-dim: #b0b0b0;
-    --box-shadow: 0 5px 15px rgba(0, 255, 140, 0.2);
-    --glow-shadow: 0 0 10px rgba(0, 255, 140, 0.4);
+    --mr-bg-dark: #0A0A0A;
+    --mr-bg-medium: #141414;
+    --mr-bg-light: #282828;
+    --mr-font-green: #00FF41;
+    --mr-font-red: #FF003C;
+    --mr-font-light: #E0E0E0;
+    --mr-font-dim: #A0A0A0;
+    --box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2); /* Updated alpha for green */
+    --glow-shadow: 0 0 10px rgba(0, 255, 65, 0.4); /* Updated alpha for green */
     --transition: all 0.3s ease;
-    --font-main: 'Source Sans Pro', sans-serif;
+    --font-main: 'Source Code Pro', 'Courier New', monospace;
 }
 
 * {
@@ -25,9 +24,13 @@
     scroll-behavior: smooth;
 }
 
+html, body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20"><rect x="0" y="0" width="10" height="20" fill="%2300FF41"><animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" /></rect></svg>') 0 10, auto;
+}
+
 body {
-    background-color: var(--dark-bg);
-    color: var(--text-light);
+    background-color: var(--mr-bg-dark);
+    color: var(--mr-font-light);
     overflow-x: hidden;
     position: relative;
 }
@@ -39,11 +42,23 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, transparent 49%, rgba(0, 255, 140, 0.03) 50%, transparent 51%);
-    background-size: 10px 10px;
-    z-index: -1;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0) 0px,
+        rgba(0, 0, 0, 0) 1px,
+        var(--mr-font-green, #00FF41) 2px,
+        rgba(0, 0, 0, 0) 3px
+    );
+    opacity: 0.05; /* Make it subtle */
+    z-index: -10; /* Ensure it's behind everything */
     pointer-events: none;
+    /* animation: scanlineAnim 60s linear infinite; */ /* Animation disabled for now */
 }
+
+/* @keyframes scanlineAnim {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+} */
 
 .container {
     min-height: 100vh;
@@ -68,7 +83,7 @@ section {
     margin-bottom: 60px;
     padding-bottom: 20px;
     position: relative;
-    color: var(--text-light);
+    color: var(--mr-font-light);
 }
 
 .title::before {
@@ -78,7 +93,7 @@ section {
     left: 50%;
     width: 180px;
     height: 3px;
-    background: var(--light-bg);
+    background: var(--mr-bg-light);
     transform: translateX(-50%);
 }
 
@@ -89,13 +104,18 @@ section {
     left: 50%;
     font-size: 20px;
     padding: 5px;
-    background: var(--dark-bg);
-    color: var(--primary-color);
+    background: var(--mr-bg-dark);
+    color: var(--mr-font-green);
     transform: translateX(-50%);
     width: 50px;
     height: 3px;
-    background: var(--primary-color);
+    background: var(--mr-font-green);
     box-shadow: var(--glow-shadow);
+}
+
+.title:hover {
+  animation: subtleFlicker 0.5s infinite alternate;
+  color: var(--mr-font-green); /* Optional: change color to green on hover */
 }
 
 /* ===== HEADER & NAVIGATION ===== */
@@ -104,9 +124,9 @@ header {
     width: 100%;
     z-index: 999;
     padding: 20px 80px;
-    background: rgba(10, 10, 10, 0.9);
+    background: rgba(10, 10, 10, 0.9); /* Assuming this is meant to be dark, like mr-bg-dark */
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 255, 140, 0.1);
+    border-bottom: 1px solid rgba(0, 255, 65, 0.1); /* Updated alpha for green */
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
     transition: var(--transition);
     display: flex;
@@ -117,22 +137,22 @@ header {
 header .logo {
     font-size: 28px;
     font-weight: 600;
-    color: var(--primary-color);
-    text-shadow: 0 0 10px rgba(0, 255, 140, 0.3);
+    color: var(--mr-font-green);
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.3); /* Updated alpha for green */
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
     0% {
-        text-shadow: 0 0 5px rgba(0, 255, 140, 0.3);
+        text-shadow: 0 0 5px rgba(0, 255, 65, 0.3); /* Updated alpha for green */
     }
 
     50% {
-        text-shadow: 0 0 20px rgba(0, 255, 140, 0.8);
+        text-shadow: 0 0 20px rgba(0, 255, 65, 0.8); /* Updated alpha for green */
     }
 
     100% {
-        text-shadow: 0 0 5px rgba(0, 255, 140, 0.3);
+        text-shadow: 0 0 5px rgba(0, 255, 65, 0.3); /* Updated alpha for green */
     }
 }
 
@@ -146,7 +166,7 @@ header .navbar ul li {
 
 header .navbar ul li a {
     display: block;
-    color: var(--text-light);
+    color: var(--mr-font-light);
     font-size: 18px;
     font-weight: 500;
     position: relative;
@@ -155,7 +175,7 @@ header .navbar ul li a {
 
 header .navbar ul li a:hover,
 header .navbar ul li a.active {
-    color: var(--primary-color);
+    color: var(--mr-font-green);
 }
 
 header .navbar ul li a::before {
@@ -165,7 +185,7 @@ header .navbar ul li a::before {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--primary-color);
+    background: var(--mr-font-green);
     transition: var(--transition);
     box-shadow: var(--glow-shadow);
 }
@@ -183,7 +203,7 @@ header .navbar ul li a.active::before {
 .hamburger .line {
     width: 30px;
     height: 3px;
-    background: var(--text-light);
+    background: var(--mr-font-light);
     margin: 6px 0;
     transition: var(--transition);
 }
@@ -240,8 +260,8 @@ header .navbar ul li a.active::before {
     font-size: 75px;
     font-weight: 600;
     margin-left: -3px;
-    color: var(--primary-color);
-    text-shadow: 0 0 15px rgba(0, 255, 140, 0.4);
+    color: var(--mr-font-green);
+    text-shadow: 0 0 15px rgba(0, 255, 65, 0.4); /* Updated alpha for green */
     animation: fadeInUp 1s ease 0.2s both;
 }
 
@@ -296,19 +316,19 @@ header .navbar ul li a.active::before {
     align-items: center;
     width: 50px;
     height: 50px;
-    background: rgba(42, 42, 42, 0.5);
+    background: rgba(42, 42, 42, 0.5); /* This could be --mr-bg-light or medium if we want consistency */
     border-radius: 50%;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 2px solid var(--mr-font-green);
+    color: var(--mr-font-green);
     font-size: 20px;
     transition: var(--transition);
 }
 
 .home .social-icons a:hover {
-    background: var(--primary-color);
-    color: var(--dark-bg);
+    background: var(--mr-font-green);
+    color: var(--mr-bg-dark);
     transform: translateY(-5px);
-    box-shadow: 0 0 15px rgba(0, 255, 140, 0.6);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); /* Updated alpha for green */
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -328,12 +348,12 @@ header .navbar ul li a.active::before {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     transition: var(--transition);
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--mr-font-green);
 }
 
 .about .about-content .Left-column img:hover {
     transform: scale(1.03);
-    box-shadow: 0 0 25px rgba(0, 255, 140, 0.3);
+    box-shadow: 0 0 25px rgba(0, 255, 65, 0.3); /* Updated alpha for green */
 }
 
 .about .about-content .right-column {
@@ -343,7 +363,7 @@ header .navbar ul li a.active::before {
 .about .about-content .right-column p {
     font-size: 18px;
     line-height: 1.8;
-    color: var(--text-dim);
+    color: var(--mr-font-dim);
 }
 
 .about .about-content .right-column p ul li {
@@ -352,14 +372,14 @@ header .navbar ul li a.active::before {
 
 .about .about-content .right-column a {
     display: inline-block;
-    background: transparent;
-    color: var(--primary-color);
+    background: var(--mr-bg-dark); /* Or transparent if preferred */
+    color: var(--mr-font-green);
     font-size: 18px;
     font-weight: 600;
     padding: 12px 30px;
     margin-top: 30px;
     border-radius: 50px;
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--mr-font-green);
     transition: var(--transition);
     position: relative;
     overflow: hidden;
@@ -373,14 +393,14 @@ header .navbar ul li a.active::before {
     left: 0;
     width: 0%;
     height: 100%;
-    background: var(--primary-color);
+    background: var(--mr-font-green);
     transition: var(--transition);
     z-index: -1;
 }
 
 .about .about-content .right-column a:hover {
-    color: var(--dark-bg);
-    box-shadow: 0 0 15px rgba(0, 255, 140, 0.6);
+    color: var(--mr-bg-dark);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); /* Updated alpha for green */
 }
 
 .about .about-content .right-column a:hover::before {
@@ -401,11 +421,11 @@ header .navbar ul li a.active::before {
     min-width: 300px;
     margin: 15px;
     padding: 25px;
-    background: var(--medium-bg);
+    background: var(--mr-bg-medium);
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: var(--transition);
-    border: 1px solid rgba(0, 255, 140, 0.1);
+    border: 1px solid var(--mr-font-green); /* Changed to green, could be dimmed */
 }
 
 .skills .skill-content .left:hover,
@@ -413,14 +433,14 @@ header .navbar ul li a.active::before {
 .skills .skill-content .right:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(0, 255, 140, 0.3);
+    border: 1px solid var(--mr-font-green); /* Intensified border on hover */
 }
 
 .skills .skill-content .text {
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 25px;
-    color: var(--primary-color);
+    color: var(--mr-font-green);
     position: relative;
     display: inline-block;
 }
@@ -432,20 +452,20 @@ header .navbar ul li a.active::before {
     left: 0;
     width: 50px;
     height: 2px;
-    background: var(--primary-color);
+    background: var(--mr-font-green);
     box-shadow: var(--glow-shadow);
 }
 
 .skills .skill-content li {
     margin-bottom: 15px;
-    color: var(--text-dim);
+    color: var(--mr-font-dim);
     font-size: 16px;
     line-height: 1.6;
 }
 
 .skills .skill-content .left li .bar {
     height: 8px;
-    background: var(--light-bg);
+    background: var(--mr-bg-light); /* Darker background for the bar */
     position: relative;
     border-radius: 10px;
     overflow: hidden;
@@ -458,8 +478,8 @@ header .navbar ul li a.active::before {
     display: block;
     height: 100%;
     width: 0;
-    background: linear-gradient(90deg, var(--primary-color), #4dffb4);
-    box-shadow: 0 0 10px var(--primary-color);
+    background: var(--mr-font-green); /* Solid green for the bar fill */
+    box-shadow: 0 0 10px var(--mr-font-green); /* Glow effect for the bar */
     border-radius: 10px;
     position: relative;
 }
@@ -574,11 +594,11 @@ header .navbar ul li a.active::before {
 }
 
 .projects .details-container {
-    background: var(--medium-bg);
+    background: var(--mr-bg-medium);
     border-radius: 15px;
     padding: 20px;
     transition: var(--transition);
-    border: 1px solid rgba(0, 255, 140, 0.1);
+    border: 1px solid var(--mr-font-green); /* Changed to green, could be dimmed */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     height: 100%;
     display: flex;
@@ -588,7 +608,7 @@ header .navbar ul li a.active::before {
 .projects .details-container:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(0, 255, 140, 0.3);
+    border: 1px solid var(--mr-font-green); /* Intensified border on hover */
 }
 
 .projects .artical-container {
@@ -614,14 +634,14 @@ header .navbar ul li a.active::before {
 .projects .project-sub-title {
     font-size: 22px;
     margin-bottom: 20px;
-    color: var(--primary-color);
+    color: var(--mr-font-green);
     text-align: center;
     cursor: pointer;
     transition: var(--transition);
 }
 
 .projects .project-sub-title:hover {
-    color: var(--accent-color);
+    color: var(--mr-font-red); /* Using red for accent hover */
 }
 
 .projects .btn-container {
@@ -631,9 +651,9 @@ header .navbar ul li a.active::before {
 }
 
 .projects .project-btn {
-    background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    background: var(--mr-bg-dark); /* Or transparent */
+    color: var(--mr-font-green);
+    border: 2px solid var(--mr-font-green);
     padding: 10px 20px;
     border-radius: 50px;
     font-size: 16px;
@@ -652,14 +672,14 @@ header .navbar ul li a.active::before {
     left: 0;
     width: 0%;
     height: 100%;
-    background: var(--primary-color);
+    background: var(--mr-font-green);
     transition: var(--transition);
     z-index: -1;
 }
 
 .projects .project-btn:hover {
-    color: var(--dark-bg);
-    box-shadow: 0 0 15px rgba(0, 255, 140, 0.6);
+    color: var(--mr-bg-dark);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); /* Updated alpha for green */
 }
 
 .projects .project-btn:hover::before {
@@ -667,6 +687,18 @@ header .navbar ul li a.active::before {
 }
 
 /* ===== CONTACT SECTION ===== */
+
+@keyframes subtleFlicker {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.2); /* Subtle green glow */
+  }
+  50% {
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.4); /* Slightly more intense glow */
+  }
+}
+
 .contact .contact-content {
     display: flex;
     flex-wrap: wrap;
@@ -684,30 +716,30 @@ header .navbar ul li a.active::before {
 
 .contact .contact-content .left .box {
     margin-bottom: 30px;
-    background: var(--medium-bg);
+    background: var(--mr-bg-medium);
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: var(--transition);
-    border: 1px solid rgba(0, 255, 140, 0.1);
+    border: 1px solid var(--mr-font-green); /* Changed to green, could be dimmed */
 }
 
 .contact .contact-content .left .box:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(0, 255, 140, 0.3);
+    border: 1px solid var(--mr-font-green); /* Intensified border on hover */
 }
 
 .contact .contact-content .left .box .text h3 {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
-    color: var(--primary-color);
+    color: var(--mr-font-green);
 }
 
 .contact .contact-content .left .box .text p {
     font-size: 18px;
-    color: var(--text-dim);
+    color: var(--mr-font-dim);
 }
 
 .contact .contact-content .left .box .social-icons {
@@ -721,56 +753,56 @@ header .navbar ul li a.active::before {
     align-items: center;
     width: 40px;
     height: 40px;
-    background: rgba(42, 42, 42, 0.5);
+    background: rgba(42, 42, 42, 0.5); /* Could be --mr-bg-light or medium */
     border-radius: 50%;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 2px solid var(--mr-font-green);
+    color: var(--mr-font-green);
     font-size: 18px;
     transition: var(--transition);
 }
 
 .contact .contact-content .left .box .social-icons a:hover {
-    background: var(--primary-color);
-    color: var(--dark-bg);
+    background: var(--mr-font-green);
+    color: var(--mr-bg-dark);
     transform: translateY(-5px);
-    box-shadow: 0 0 15px rgba(0, 255, 140, 0.6);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); /* Updated alpha for green */
 }
 
 .contact .contact-content .right {
-    background: var(--medium-bg);
+    background: var(--mr-bg-light); /* Lighter than left boxes */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: var(--transition);
-    border: 1px solid rgba(0, 255, 140, 0.1);
+    border: 1px solid var(--mr-font-green); /* Changed to green, could be dimmed */
 }
 
 .contact .contact-content .right:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(0, 255, 140, 0.3);
+    border: 1px solid var(--mr-font-green); /* Intensified border on hover */
 }
 
 .contact .contact-content .right h2 {
     font-size: 28px;
     margin-bottom: 15px;
-    color: var(--primary-color);
+    color: var(--mr-font-green);
 }
 
 .contact .contact-content .right p {
     font-size: 18px;
-    color: var(--text-dim);
+    color: var(--mr-font-dim);
 }
 
 .contact .contact-content .right button {
     display: inline-block;
-    background: transparent;
-    color: var(--primary-color);
+    background: var(--mr-bg-dark); /* Or transparent */
+    color: var(--mr-font-green);
     font-size: 18px;
     font-weight: 600;
     padding: 12px 30px;
     margin-top: 20px;
     border-radius: 50px;
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--mr-font-green);
     transition: var(--transition);
     position: relative;
     overflow: hidden;
@@ -785,14 +817,14 @@ header .navbar ul li a.active::before {
     left: 0;
     width: 0%;
     height: 100%;
-    background: var(--primary-color);
+    background: var(--mr-font-green);
     transition: var(--transition);
     z-index: -1;
 }
 
 .contact .contact-content .right button:hover {
-    color: var(--dark-bg);
-    box-shadow: 0 0 15px rgba(0, 255, 140, 0.6);
+    color: var(--mr-bg-dark);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.6); /* Updated alpha for green */
 }
 
 .contact .contact-content .right button:hover::before {
@@ -868,11 +900,11 @@ header .navbar ul li a.active::before {
         right: -100%;
         width: 270px;
         height: 100vh;
-        background: var(--medium-bg);
+        background: var(--mr-bg-medium); /* Updated background */
         padding-top: 80px;
         transition: var(--transition);
         z-index: 999;
-        border-left: 1px solid rgba(0, 255, 140, 0.1);
+        border-left: 1px solid rgba(0, 255, 65, 0.1); /* Updated alpha for green */
         box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
     }
 
@@ -967,16 +999,16 @@ header .navbar ul li a.active::before {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 9999;
-    opacity: 0.05;
+    z-index: -5; /* Lowered z-index */
+    opacity: 0.08;
 }
 
 .terminal-code {
     position: absolute;
     font-family: monospace;
     font-size: 14px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px var(--primary-color);
+    color: var(--mr-font-green); /* Already using the correct variable */
+    text-shadow: 0 0 5px var(--mr-font-green); /* Already using the correct variable */
     animation: matrixRain linear infinite;
 }
 
@@ -997,3 +1029,119 @@ header .navbar ul li a.active::before {
 }
 
 /* Terminal Animation Script will be added via JS */
+
+/* ===== HERO TERMINAL ===== */
+.home { /* Ensure home section still takes full viewport height */
+    display: flex;
+    align-items: center; /* Center terminal vertically */
+    justify-content: center; /* Center terminal horizontally */
+}
+
+#terminal {
+    width: 80%; /* Adjust width as needed */
+    max-width: 700px;
+    height: 400px; /* Adjust height as needed */
+    background-color: rgba(10, 10, 10, 0.85); /* Dark, slightly transparent background */
+    border: 2px solid var(--mr-font-green);
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-main); /* Monospace font */
+}
+
+#terminal-output {
+    flex-grow: 1;
+    overflow-y: auto;
+    color: var(--mr-font-light);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+#terminal-output div {
+    margin-bottom: 5px;
+    word-break: break-all; /* Prevent long strings from breaking layout */
+}
+
+#terminal-output .command-output {
+    color: var(--mr-font-green); /* Output from commands */
+}
+
+#terminal-output .error-output {
+    color: var(--mr-font-red); /* Error messages */
+}
+
+#terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+#terminal-prompt {
+    color: var(--mr-font-green);
+    font-weight: bold;
+}
+
+#terminal-input {
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    color: var(--mr-font-light);
+    font-family: var(--font-main);
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+#terminal-input:focus {
+    outline: none;
+    /* Optional: add a blinking caret or similar focus effect if the global cursor isn't enough */
+}
+
+/* Custom scrollbar for terminal output */
+#terminal-output::-webkit-scrollbar {
+    width: 8px;
+}
+#terminal-output::-webkit-scrollbar-track {
+    background: var(--mr-bg-light);
+}
+#terminal-output::-webkit-scrollbar-thumb {
+    background-color: var(--mr-font-green);
+    border-radius: 4px;
+}
+#terminal-output::-webkit-scrollbar-thumb:hover {
+    background-color: #00cc33; /* Slightly darker green on hover */
+}
+
+/* ===== GLITCH HOVER EFFECT ===== */
+@keyframes textGlitch {
+    2%, 64% {
+        transform: translate(2px, 0) skew(0deg);
+        opacity: 0.8;
+    }
+    4%, 60% {
+        transform: translate(-2px, 0) skew(0deg);
+    }
+    62% {
+        transform: translate(0, 0) skew(5deg);
+    }
+}
+
+/* Apply to navigation links and specified buttons */
+header .navbar ul li a,
+.button-link, /* A generic class for button-like links, if created */
+.projects .project-btn, /* Corrected selector */
+.about .about-content .right-column a, /* Resume button */
+.contact .contact-content .right button /* Contact button */
+ {
+    position: relative; /* Needed for pseudo-elements if used later, good practice */
+}
+
+header .navbar ul li a:hover,
+.button-link:hover,
+.projects .project-btn:hover, /* Corrected selector */
+.about .about-content .right-column a:hover,
+.contact .contact-content .right button:hover {
+    animation: textGlitch 0.25s infinite cubic-bezier(.25,.46,.45,.94) both;
+    color: var(--mr-font-green); /* Ensure color changes on hover */
+}

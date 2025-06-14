@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - ACCESS DENIED</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Specific styles for 404 page */
+        body.error-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--mr-bg-dark, #0A0A0A);
+            color: var(--mr-font-red, #FF003C);
+            font-family: var(--font-main, monospace);
+            text-align: center;
+            padding: 20px;
+            overflow: hidden; /* Hide scrollbars if content is minimal */
+        }
+
+        .error-container {
+            border: 2px solid var(--mr-font-red, #FF003C);
+            padding: 40px;
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.5); /* Red glow */
+            background-color: var(--mr-bg-medium, #141414);
+            max-width: 700px;
+        }
+
+        .error-title {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: textGlitch 0.5s infinite alternate; /* Reuse existing glitch */
+        }
+
+        .error-message {
+            font-size: 1.2em;
+            color: var(--mr-font-light, #E0E0E0);
+            margin-bottom: 30px;
+        }
+
+        .error-message .highlight {
+            color: var(--mr-font-green, #00FF41);
+            font-weight: bold;
+        }
+
+        .error-ascii {
+            font-size: 0.8em;
+            color: var(--mr-font-dim, #A0A0A0);
+            white-space: pre; /* Preserve ASCII art formatting */
+            margin-bottom: 30px;
+        }
+
+        .home-link {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid var(--mr-font-green, #00FF41);
+            color: var(--mr-font-green, #00FF41);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .home-link:hover {
+            background-color: var(--mr-font-green, #00FF41);
+            color: var(--mr-bg-dark, #0A0A0A);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+        }
+
+        /* Blinking cursor for a more terminal feel */
+        .blinking-cursor::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+            color: var(--mr-font-red, #FF003C);
+        }
+
+        /* Keyframes for textGlitch (should already be in index.css but include here for completeness if needed) */
+        /* Ensure these are not duplicated if already globally available from index.css */
+        /* It's better if index.css provides them. */
+        /* For subtask, assuming they might be needed if index.css isn't perfectly loaded or specific overrides are desired */
+        @keyframes textGlitch {
+            2%, 64% {
+                transform: translate(2px, 0) skew(0deg);
+                opacity: 0.8;
+            }
+            4%, 60% {
+                transform: translate(-2px, 0) skew(0deg);
+            }
+            62% {
+                transform: translate(0, 0) skew(5deg);
+            }
+        }
+
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+    </style>
+</head>
+<body class="error-page">
+    <div class="error-container">
+        <h1 class="error-title">Access Denied<span class="blinking-cursor"></span></h1>
+        <pre class="error-ascii">
+  ██████╗ █████╗ ██████╗ ███████╗███████╗███████╗
+  ██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
+  ██║  ██║███████║██████╔╝█████╗  █████╗  ███████╗
+  ██║  ██║██╔══██║██╔══██╗██╔══╝  ██╔══╝  ╚════██║
+  ██████╔╝██║  ██║██║  ██║███████╗███████╗███████║
+  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝
+        </pre>
+        <p class="error-message">
+            Intrusion attempt logged. Your IP and activity have been recorded.
+            <br>You tried to access a resource that is restricted or does not exist.
+            <br>Further unauthorized access will trigger <span class="highlight">DEFCON 1</span> protocols.
+        </p>
+        <a href="index.html" class="home-link" data-text="Return to Safety">./return_to_safety.sh</a>
+    </div>
+
+    <!-- The terminal animation script can be optionally included if desired for the 404 page -->
+    <!-- <script src="js/terminal-annimation.js"></script> -->
+</body>
+</html>
