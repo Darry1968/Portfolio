@@ -494,6 +494,8 @@
         hamburger.onclick = function () {
             navBar = document.querySelector(".navbar");
             navBar.classList.toggle("active");
+            // Add this line:
+            document.body.classList.toggle("no-scroll", navBar.classList.contains("active"));
         }
 
         // Project modal functionality
