@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'help': () => {
             appendOutput("Available commands:", "command-output");
             appendOutput("  help                - Show this help message", "command-output");
+            appendOutput("  whoami                - Brief intro about me", "command-output");
             appendOutput("  ls | dir            - List navigable sections", "command-output");
-            appendOutput("  cat | open | goto   - Navigate to a section (e.g., 'cat about')", "command-output");
+            appendOutput("  cat | open | cd   - Navigate to a section (e.g., 'cat about')", "command-output");
             appendOutput("  date                - Display current date and time", "command-output");
             appendOutput("  echo [text]         - Display text", "command-output");
             appendOutput("  clear | cls         - Clear the terminal screen", "command-output");
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'dir': listSections,
         'cat': navigateToSection,
         'open': navigateToSection,
-        'goto': navigateToSection,
+        'cd': navigateToSection,
         'date': () => {
             appendOutput(new Date().toLocaleString(), "command-output");
         },
@@ -41,6 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'clear': clearTerminal,
         'cls': clearTerminal,
+        'whoami': () => {
+            appendOutput("Hello, Friend", "command-output");
+            appendOutput("How do we know if we're in control?", "command-output");
+            appendOutput("Well, my name is Darshan.", "command-output");
+            appendOutput("I'm a security researcher, CTF player, and Security Program manager.", "command-output");
+        },
         'resume': () => {
             appendOutput("Accessing secure file: Resume.pdf...", "command-output");
             window.open('Resume.pdf', '_blank');
@@ -84,13 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const initialMessages = Array.from(terminalOutput.children).slice(0, 4); // Keep first 4 lines
         terminalOutput.innerHTML = '';
         initialMessages.forEach(msg => terminalOutput.appendChild(msg.cloneNode(true)));
-         appendOutput("Terminal cleared. Type 'help' for commands.", "command-output");
+        appendOutput("Terminal cleared. Type 'help' for commands.", "command-output");
     }
 
     function appendOutput(message, type = '') {
         const newLine = document.createElement('div');
         if (type === 'command-output' || type === 'error-output') {
-             newLine.innerHTML = message; // Use innerHTML to render links for socials command
+            newLine.innerHTML = message; // Use innerHTML to render links for socials command
         } else {
             newLine.textContent = message;
         }
