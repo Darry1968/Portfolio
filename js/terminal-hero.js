@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             appendOutput("  ls | dir            - List navigable sections", "command-output");
             appendOutput("  cat | open | cd   - Navigate to a section (e.g., 'cat about')", "command-output");
             appendOutput("  date                - Display current date and time", "command-output");
-            appendOutput("  echo [text]         - Display text", "command-output");
+            // appendOutput("  echo [text]         - Display text", "command-output");
             appendOutput("  clear | cls         - Clear the terminal screen", "command-output");
             appendOutput("  resume              - Open my resume", "command-output");
             appendOutput("  socials             - Show social media links", "command-output");
@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'date': () => {
             appendOutput(new Date().toLocaleString(), "command-output");
         },
-        'echo': (args) => {
-            appendOutput(args.join(' '), "command-output");
-        },
+        // 'echo': (args) => {
+        //     appendOutput(args.join(' '), "command-output");
+        // },
         'clear': clearTerminal,
         'cls': clearTerminal,
         'whoami': () => {
