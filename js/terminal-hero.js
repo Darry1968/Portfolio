@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (command && commands[command.toLowerCase()]) {
                 commands[command.toLowerCase()](args);
             } else if (command) {
-                appendOutput(`fsociety_OS: command not found: ${command}. Type 'help'.`, "error-output");
+                appendOutput(`na5hv4r_OS: command not found: ${command}. Type 'help'.`, "error-output");
             }
             terminalOutput.scrollTop = terminalOutput.scrollHeight;
         }
