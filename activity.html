@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Activities - Darshan Soni</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/assets/Nashvar logo.png">
+    <script src="js/glitch-effect.js"></script>
+    <script src="js/typing-effect.js"></script>
+    <style>
+        /* body {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+        } */
+
+        .activities-container {
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+        }
+
+        .activities-title {
+            font-size: 32px;
+            text-align: center;
+            color: #00c3ff;
+            margin-bottom: 40px;
+            text-shadow: 0 0 8px rgba(0, 255, 140, 0.3);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .activity-card {
+            background-color: #1a1a1a;
+            border: 1px solid #00c3ff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 255, 140, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .activity-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .activity-description {
+            padding: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .activities-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Reuse header from index.html -->
+    <header>
+        <div class="logo">Na5hV4r</div>
+
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html" data-text="Home">Home</a></li>
+                <li><a href="#about" data-text="About">About</a></li>
+                <li><a href="#skills" data-text="Skills">Skills</a></li>
+                <li><a href="#projects" data-text="Exploits">Exploits</a></li>
+                <li><a href="activity.html" data-text="Activities">Activities</a></li>
+                <li><a href="#contact" data-text="Contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="activities-container">
+        <h2 class="activities-title">My Activities & Achievements</h2>
+        <div class="activities-grid">
+
+            <!-- Card 1 -->
+            <div class="activity-card">
+                <div class="activity-image">
+                    <img src="assets/achievements/best-outgoing-student.jpg" alt="Mentoring students">
+                </div>
+                <div class="activity-description">
+                    I received the Best Outgoing Student Award from the Department of Cybersecurity and Forensics. This
+                    recognition was given for my academic excellence, leadership, and active contributions to the
+                    department's growth and student community.
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="activity-card">
+                <div class="activity-image">
+                    <img src="assets/achievements/meritorious-student.jpg" alt="Team group photo">
+                </div>
+                <div class="activity-description">
+                    I was honored with the Meritorious Student Award in recognition of my consistent academic
+                    performance and dedication throughout my studies. This award highlights my commitment to excellence
+                    and my proactive involvement in curricular and extracurricular activities.
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="activity-card">
+                <div class="activity-image">
+                    <img src="assets/achievements/shunya-ctf.jpg" alt="German Hackers Conference">
+                </div>
+                <div class="activity-description">
+                    Organized Shunya CTF, a national-level Capture The Flag (CTF) competition, as part of the nCreeps
+                    team. The event attracted participants from across the country, challenging them with real-world
+                    cybersecurity problems and fostering a vibrant community of ethical hackers and learners.
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="activity-card">
+                <div class="activity-image">
+                    <img src="assets/achievements/nullcon.jpg" alt="Blackout event team">
+                </div>
+                <div class="activity-description">
+                    Participated in Nullcon, a premier cybersecurity conference, where I engaged with industry experts,
+                    learned about the latest trends in cybersecurity, and networked with professionals from around the
+                    world. This experience enhanced my knowledge and provided valuable insights into the cybersecurity
+                    landscape.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        hamburger.onclick = function () {
+            const navBar = document.querySelector(".navbar");
+            navBar.classList.toggle("active");
+            document.body.classList.toggle("no-scroll", navBar.classList.contains("active"));
+        };
+    </script>
+</body>
+
+</html>
